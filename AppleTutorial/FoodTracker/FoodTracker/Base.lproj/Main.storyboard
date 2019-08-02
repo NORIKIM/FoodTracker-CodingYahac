@@ -52,6 +52,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="mealNameLabel" destination="5wT-Vt-1qQ" id="Itq-8G-qrp"/>
                         <outlet property="nameTextField" destination="fiA-Ko-aG6" id="soz-tU-cJb"/>
                     </connections>
                 </viewController>
