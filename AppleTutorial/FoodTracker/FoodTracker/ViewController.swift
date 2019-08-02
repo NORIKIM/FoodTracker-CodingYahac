@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mealNameLabel: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
     @IBAction func setDefaultLabelText(_ sender: UIButton) {
+        mealNameLabel.text = "Default Text"
     }
     
     override func viewDidLoad() {
