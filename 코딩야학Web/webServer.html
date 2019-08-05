@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <title>WEB1 - 서버</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1><a href="index.html">WEB</a></h1>
+<ol>
+  <li><a href="1.html">HTML</a></li>
+  <li><a href="2.html">CSS</a></li>
+  <li><a href="3.html">JavaScript</a></li>
+  <li><a href="webServer.html">WEB서버 운영</a></li>
+</ol>
+<h2>WEB Server 체험</h2>
+<p>
+웹서버 Bitnami MAMP 설치<br>
+<a href="https://bitnami.com/stack/mamp/installer">https://bitnami.com/stack/mamp/installer</a><br>
+<br>
+다양한 웹 서버중에 아파치(Apache)를 사용하기로 한다. 맥에는 아파치가 이미 설치가 되있지만 아파치를 실행하고 설정을 변경하는 등의 동작은 실습하는데 추후 어려움이 예상되어 Bitnami MAMP를 별도로 설치한다.<br>
+MAMP(Mac Apache MySqul PHP)란 아파치를 직접 설치하는 어려움을 해결해주는 프로그램이다. MAMP는 자동으로 아파치가 설치가된다.<br>
+Application/mampstack-apache2-htdocs 내의 파일을 삭제하고 내가 만들었던 web의 html파일들로 대치하면 나의 index.html 페이지 확인이 가능.<br>
+</p>
+<p>
+  http://127.0.0.1:8080/index.html<br>
+  127.0.0.1 -> IP Address : 인터넷에 연결된 각각의 컴퓨터의 주소<br>
+  8080 -> PORT : 하나의 컴퓨터에 서버가 두개일 때 구분을 하기 위해 붙여준다. 8080이 붙으면 설치한 웹서버에 접속, 붙지않으면 원래 서버에서 접속된다.<br>
+  <img src="https://user-images.githubusercontent.com/31604976/62460802-f34b2180-b7bd-11e9-801f-554b602e18fc.jpg" width="700">
+</p>
+<p>
+  <h3>통신</h3>
+  제어판-네트워크-상태-IP주소를 휴대폰을 통해 웹페이지를 확인해볼 수 있다.(단, 같은 네트워크 환경이어야 함)<br>
+  주소 -> http://IP주소:8080/index.html
+</p>
+</body>
+</html>
