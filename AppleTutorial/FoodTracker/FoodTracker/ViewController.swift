@@ -21,7 +21,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         nameTextField.delegate = self
     }
-
+    
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
 }
 
