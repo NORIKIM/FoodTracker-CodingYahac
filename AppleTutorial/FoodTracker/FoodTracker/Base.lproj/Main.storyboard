@@ -42,9 +42,13 @@
                                     </button>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="CuM-gW-4GS">
                                         <rect key="frame" x="0.0" y="104.33333333333337" width="320" height="320"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="CuM-gW-4GS" secondAttribute="height" multiplier="1:1" id="hHD-qJ-pCV"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="H6C-k7-VDn" appends="YES" id="Ee3-L5-0Tf"/>
+                                        </connections>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -63,9 +67,15 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="5wT-Vt-1qQ" id="Itq-8G-qrp"/>
                         <outlet property="nameTextField" destination="fiA-Ko-aG6" id="soz-tU-cJb"/>
+                        <outlet property="photoImageView" destination="CuM-gW-4GS" id="Fxy-g5-M8X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="H6C-k7-VDn">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="d6l-xa-NLE"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="129.98500749625188"/>
         </scene>
