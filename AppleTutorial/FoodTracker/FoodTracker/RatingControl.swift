@@ -11,8 +11,13 @@ import UIKit
 // 코드로 UI 구현
 @IBDesignable class RatingControl: UIStackView {
     // MARK: Properties
-    private var ratingButton = [UIButton]()
-    var rating = 0
+    private var ratingButtons = [UIButton]()
+    var rating = 0 {
+        // call method change rating
+        didSet {
+            updateButtonSelectionStates()
+        }
+    }
     
     // didSet : update the control, reset the control’s buttons every time these attributes change. can be used to perform work immediately before or after the value changes.
     @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
@@ -39,18 +44,31 @@ import UIKit
     
     // MARK: Button Action
     @objc func ratingButtonTapped(button: UIButton) {
-        print("button pressed!!!!!")
+        guard let index = ratingButtons.firstIndex(of: button) else {
+            fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
+        }
+        
+        // Calculate the rating of the selected button
+        let selectedRating = index + 1
+        
+        if selectedRating == rating {
+            // If the selected star represents the current rating, reset the rating to 0.
+            rating = 0
+        } else {
+            // Otherwise set the rating to the selected star
+            rating = selectedRating
+        }
     }
     
     
     // MARK: Private Methods
     private func setupButtons() {
         // clear any existing buttons
-        for button in ratingButton {
+        for button in ratingButtons {
             removeArrangedSubview(button)
             button.removeFromSuperview()
         }
-        ratingButton.removeAll()
+        ratingButtons.removeAll()
         
         // 이미지 로드시키기
         // the control is @IBDesignable, the setup code also needs to run in Interface Builder
@@ -81,8 +99,18 @@ import UIKit
             addArrangedSubview(button)
             
             // add the new button to the rating button arrary
-            ratingButton.append(button)
+            ratingButtons.append(button)
         }
+        // update the button’s selection state whenever buttons are added to the control
+        updateButtonSelectionStates()
+    }
+    
+    private func updateButtonSelectionStates() {
+        for (index,button) in ratingButtons.enumerated() {
+            print(ratingButtons)
+            button.isSelected = index < rating
+        }
+        
     }
     
     /*
