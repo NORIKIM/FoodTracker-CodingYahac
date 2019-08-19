@@ -14,9 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
-    @IBAction func setDefaultLabelText(_ sender: UIButton) {
-        mealNameLabel.text = "Default Text"
-    }
+   
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         // 사용자가 텍스트필드에 타이핑 중일 때 이미지뷰를 탭해도 키보드를 숨긴다.
         nameTextField.resignFirstResponder()
