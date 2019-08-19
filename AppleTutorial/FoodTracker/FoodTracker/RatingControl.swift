@@ -52,10 +52,21 @@ import UIKit
         }
         ratingButton.removeAll()
         
+        // 이미지 로드시키기
+        // the control is @IBDesignable, the setup code also needs to run in Interface Builder
+        let bundle = Bundle(for: type(of: self)) // assets에 있는 이미지를 가리킴
+        // init(named:in:compatibleWith:) > in에 해당 named를 가지고 있는 compatibleWith의 이미지를 가져옴
+        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+        let emptyStar = UIImage(named:"emptyStar", in: bundle, compatibleWith: self.traitCollection)
+        let highlightedStar = UIImage(named:"highlightedStar", in: bundle, compatibleWith: self.traitCollection)
+        
         for _ in 0 ..< starCount {
-            // create the button
             let button = UIButton()
-            button.backgroundColor = UIColor.red
+            // set the button images
+            button.setImage(emptyStar, for: .normal)
+            button.setImage(filledStar, for: .selected)
+            button.setImage(highlightedStar, for: .highlighted)
+            button.setImage(highlightedStar, for: [.highlighted,.selected])
             
             // add contraints
             // define the button as a fixed-size object in your layout (44 point x 44 point).
