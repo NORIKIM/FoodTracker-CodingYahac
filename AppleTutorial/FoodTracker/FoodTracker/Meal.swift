@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Data model for a meal
 class Meal {
     var name: String
     var photo: UIImage?
