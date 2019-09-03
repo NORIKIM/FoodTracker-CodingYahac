@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kka-oB-ADd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ws0-qR-jnR">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -55,10 +55,11 @@
                             <outlet property="delegate" destination="kka-oB-ADd" id="0BV-Gr-eDL"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="gxU-aI-cnu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2H-ol-BGL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-652" y="128.57142857142858"/>
+            <point key="canvasLocation" x="290.39999999999998" y="128.57142857142858"/>
         </scene>
         <!--Meal View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -68,8 +69,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1oR-A4-aee">
-                                <rect key="frame" x="16" y="64" width="343" height="416"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1oR-A4-aee">
+                                <rect key="frame" x="16" y="64" width="343" height="410"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter meal name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fiA-Ko-aG6">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="30"/>
@@ -87,8 +88,8 @@
                                             <outletCollection property="gestureRecognizers" destination="H6C-k7-VDn" appends="YES" id="Ee3-L5-0Tf"/>
                                         </connections>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pwd-tw-npW" customClass="RatingControl" customModule="FoodTracker">
-                                        <rect key="frame" x="45.666666666666657" y="366" width="251.99999999999997" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pwd-tw-npW" customClass="RatingControl" customModule="FoodTracker" customModuleProvider="target">
+                                        <rect key="frame" x="45.666666666666657" y="366" width="251.99999999999997" height="44"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="size" keyPath="starSize">
                                                 <size key="value" width="44" height="44"/>
@@ -125,7 +126,25 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="138.40000000000001" y="129.98500749625188"/>
+            <point key="canvasLocation" x="1080.8" y="129.31034482758622"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oHU-0T-Ptb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ws0-qR-jnR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pot-1M-0M9">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kka-oB-ADd" kind="relationship" relationship="rootViewController" id="bQP-9N-7fA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GcI-6g-ckO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-540" y="129"/>
         </scene>
     </scenes>
     <resources>
