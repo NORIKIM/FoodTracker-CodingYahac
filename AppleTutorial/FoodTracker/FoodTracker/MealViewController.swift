@@ -52,6 +52,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         super.viewDidLoad()
         
         nameTextField.delegate = self
+        updateSaveButtonState() // 텍스트 필드에 유효한 내용이 있으면 저장버튼 활성화
     }
     
     // MARK: UITextFieldDelegate
@@ -62,7 +63,14 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState() // 텍스트 필드에 내용이 있는지 확인
+        navigationItem.title = textField.text // 씬 제목을 위에서 텍스트 필드에 작성한 내용으로 한다.
         //mealNameLabel.text = textField.text
+    }
+    
+    // 작성중일 때에는 저장 버튼을 비활성화합니다.
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        saveButton.isEnabled = false
     }
     
     // MARK: UIImagePickerControllerDelegate
@@ -79,6 +87,14 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         photoImageView.image = selectedImage
         
         dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: Privae methods
+    // 텍스트 필드가 비어있으면 저장 버튼 비활성화
+    private func updateSaveButtonState() {
+       
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
     }
 
 }
