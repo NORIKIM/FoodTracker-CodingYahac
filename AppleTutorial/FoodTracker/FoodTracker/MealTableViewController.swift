@@ -22,8 +22,13 @@ class MealTableViewController: UITableViewController {
         // 테이블 뷰 컨트롤러에서 제공하는 edit버튼 사용하기
         navigationItem.leftBarButtonItem = editButtonItem
         
-        // Load the sample data.
-        loadSamplemeal()
+        // 저장된 meals를 로드하고, 그렇지 않으면 샘플데이터 로드
+        if let savedMeals = loadMeals() {
+            meals += savedMeals
+        } else {
+            // 샘플데이터 로드
+            loadSampleMeals()
+        }
     }
 
     // MARK: - Table view data source
@@ -70,6 +75,7 @@ class MealTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             meals.remove(at: indexPath.row)
+            saveMeals() // meal이 삭제 될때마다 meals 배열에 저장해준다.
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -123,7 +129,7 @@ class MealTableViewController: UITableViewController {
  
     
     // MARK: Private methods
-    private func loadSamplemeal() {
+    private func loadSampleMeals() {
         let photo1 = UIImage(named: "meal1")
         let photo2 = UIImage(named: "meal2")
         let photo3 = UIImage(named: "meal3")
@@ -143,6 +149,18 @@ class MealTableViewController: UITableViewController {
         meals += [meal1, meal2, meal3]
     }
     
+    private func saveMeals() {
+        // 특정 위치에 meals배열을 보관하려고 시도한다.(정보를 저장할 위치를 식별)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
+        
+        // 데이터가 성공적으로 저장되는지 확인
+        if isSuccessfulSave {
+            os_log("Meals successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
+    }
+    
     // MARK: Actions
     @IBAction func unwindToMealList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? MealViewController, let meal = sourceViewController.meal {
@@ -157,9 +175,16 @@ class MealTableViewController: UITableViewController {
                 meals.append(meal)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
+            // meal 저장
+            saveMeals()
             
         }
        
+    }
+    
+    // meal리스트를 로드시킨다.
+    private func loadMeals() -> [Meal]? {
+        return try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(Data(contentsOf: Meal.ArchiveURL)) as? [Meal]
     }
 
 }
